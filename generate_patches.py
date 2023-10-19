@@ -4,6 +4,7 @@ import numpy as np
 import scipy.ndimage as ndimage
 import scipy.misc as misc
 
+# numpy random 模块参考： https://numpy.org/doc/stable/reference/random/index.html
 np.random.seed(2)
 
 """ Options """
@@ -33,11 +34,14 @@ heightmaps = [
 
 X, C = [], []
 
+# fi is file index
 for fi, filename in enumerate(heightmaps):
     
     H = np.loadtxt(filename)
+    # "// floordiv(a, b)"  ref: https://docs.python.org/3/library/operator.html
     nsamples = (H.shape[0]*H.shape[1])//(sparsity*sparsity)
     
+    # X ?
     print('Processing %s (%i x %i) %i [%i]' % (filename, H.shape[0], H.shape[1], len(X), nsamples))
 
     for si in range(nsamples):
